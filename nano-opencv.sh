@@ -1,15 +1,15 @@
 
 username=$USER
-read -p "Enter PROXPC Machine Password please: " password 
+read -p "Enter Machine Password again please: " password 
 cd
-
-echo "WELCOME "
-echo "PROXPC"
-echo "MAKING YOUR DEVICE INFERENCING CAPABLE"
 
 sudo apt update
 sudo apt upgrade
 free -m
+wget https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/raw/main/OpenCV-4-6-0.sh
+sudo chmod 755 ./OpenCV-4-6-0.sh
+./OpenCV-4-6-0.sh
+rm OpenCV-4-6-0.sh
 sudo rm -rf ~/opencv
 sudo rm -rf ~/opencv_contrib
 sudo sh -c "echo '/usr/local/cuda/lib64' >> /etc/ld.so.conf.d/nvidia-tegra.conf"
@@ -47,8 +47,6 @@ cd ~/opencv
 mkdir build
 cd build
 
-echo "COMPILING RESOURCES"
-
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D CMAKE_INSTALL_PREFIX=/usr \
 -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
@@ -81,9 +79,4 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D OPENCV_GENERATE_PKGCONFIG=ON \
 -D BUILD_EXAMPLES=OFF ..
 
-echo "BUILDING OPENCV WITH CUDA SUPPORT"
-
 make -j4
-
-echo "CONFIGURING OPENCV WITH CUDA COMPLEATED WITH NO ERROR"
-echo "THANK YOU FOR USING PROXPC SERVICE"
