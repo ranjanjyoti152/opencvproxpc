@@ -8,7 +8,7 @@ echo "##########################################################################
 sudo apt update 
 sudo apt upgrade -y 
 sudo apt autoremove -y
- aptsudo install net-tools -y
+sudo apt install net-tools -y
 sudo apt install openssh-server -y
 sudo apt install curl -y
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
