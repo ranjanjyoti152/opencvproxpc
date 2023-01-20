@@ -22,11 +22,13 @@ echo "########################################### Installing Nvidia Drivers ####
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt install nvidia-driver-520 -y
 sudo dpkg --configure -a
-gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpg
+
 sudo wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
 sudo echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
 sudo apt update
 apt -y install anydesk
+
+gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpg
 
 echo "**********************************************************************************************************************************************"
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                                                   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
