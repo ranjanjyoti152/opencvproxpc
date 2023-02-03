@@ -6,10 +6,6 @@ cd
 sudo apt update
 sudo apt upgrade
 free -m
-wget https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/raw/main/OpenCV-4-6-0.sh
-sudo chmod 755 ./OpenCV-4-6-0.sh
-./OpenCV-4-6-0.sh
-rm OpenCV-4-6-0.sh
 sudo rm -rf ~/opencv
 sudo rm -rf ~/opencv_contrib
 sudo sh -c "echo '/usr/local/cuda/lib64' >> /etc/ld.so.conf.d/nvidia-tegra.conf"
