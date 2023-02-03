@@ -5,6 +5,7 @@ cd
 
 sudo apt update
 sudo apt upgrade
+sudo apt autoremove -y
 free -m
 sudo rm -rf ~/opencv
 sudo rm -rf ~/opencv_contrib
