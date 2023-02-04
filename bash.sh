@@ -10,7 +10,7 @@ sudo apt-get update -y
 sudo apt-get install nvidia-driver-450 -y
 
 # Install AI-related applications
-sudo apt-get install python3-pip -y
+sudo apt-get install python3-pip
 pip3 install numpy scipy pandas matplotlib
 pip3 install tensorflow keras pytorch
 pip3 install opencv-python-headless opencv-python-cuda
