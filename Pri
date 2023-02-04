@@ -17,7 +17,7 @@ sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo apt update
 
 # Install the latest NVIDIA graphics driver
-sudo apt install -y nvidia-driver-latest
+sudo apt install nvidia-driver-520 -y
 
 # Download the CUDA toolkit
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
