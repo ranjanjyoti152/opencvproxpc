@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Update the package list and upgrade existing packages
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# Install dependencies for building TensorFlow from source
+sudo apt-get install -y build-essential curl git libfreetype6-dev libhdf5-dev \
+    libzmq3-dev pkg-config software-properties-common wget
+
+# Install pip
+sudo apt-get install -y python3-pip
+
+# Upgrade pip
+pip3 install --upgrade pip
+
+# Install TensorFlow
+pip3 install tensorflow
+
+# Install other popular AI libraries
+pip3 install scikit-learn numpy pandas matplotlib seaborn jupyter
+
+# Install PyTorch
+pip3 install torch torchvision
+
+# Install OpenCV
+pip3 install opencv-python
+
+# Install Keras
+pip3 install keras
+
+# Install other useful AI packages
+pip3 install imbalanced-learn scikit-image nltk
+
+# Print the version of TensorFlow to confirm the installation
+python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.constant([1.0, 2.0, 3.0])))"
