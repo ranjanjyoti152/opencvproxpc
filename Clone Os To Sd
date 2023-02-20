@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set the source and destination devices
-src_dev="/dev/sda"
-dest_devs=( "/dev/sdb" "/dev/sdc" ) # add more devices here if needed
+src_dev="/dev/sda1"
+dest_devs=( "/dev/nvme0n1" ) # add more devices here if needed
 
 # Create a partition table on the destination devices
 for dev in "${dest_devs[@]}"
