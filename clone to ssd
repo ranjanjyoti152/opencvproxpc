@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Source and destination SSDs
+src=/dev/sda
+dest=/dev/sdb
+
+# Copy the Ubuntu system to the destination SSD
+echo "Copying Ubuntu to $dest..."
+sudo dd if=$src of=$dest bs=64K conv=noerror,sync status=progress
+
+# Update the UUIDs of the destination SSD
+echo "Updating UUIDs..."
+sudo blkid -o export $dest | sed 's/'$(sudo blkid -o export $src | grep UUID)'/'$(sudo blkid -o export $src | grep UUID | cut -d'=' -f2)'/' > uuid.txt
+sudo blkid $dest -o backup=uuid.old
+sudo blkid -o restore=uuid.txt $dest
+
+echo "Done!"
