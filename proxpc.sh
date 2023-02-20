@@ -6,7 +6,8 @@ echo "##########################################################################
 
 # Update And Upgrade everything 
 sudo apt update 
-sudo apt upgrade -y 
+sudo apt upgrade -y
+sudo apt install gparted -y
 sudo apt autoremove -y
 sudo apt install git -y
 sudo apt install net-tools -y
