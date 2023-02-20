@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source and destination SSDs
-src=/dev/sda1
+src=/dev/sda
 dest=/dev/nvme0n1
 
 # Copy the Ubuntu system to the destination SSD
