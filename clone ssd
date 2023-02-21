@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo dd if=/dev/sdc of=/dev/sda bs=8M status=progress
+sudo dd if=/dev/sdc of=/dev/sdb bs=8M status=progress
