@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo dd if=/dev/nvme0n1 of=/dev/nvme1n1 bs=8M status=progress
+sudo dd if=/dev/sdb of=/dev/sda bs=8M status=progress
