@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo apt-get install smartmontools -y
+sudo smartctl -a /dev/nvme0n1
