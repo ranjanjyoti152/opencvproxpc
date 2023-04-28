@@ -20,7 +20,7 @@ echo "Installation Of Brave Browser Completed"
 
 echo "########################################### Installing Nvidia Drivers #############################################################################"
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
-sudo apt install nvidia-driver-520 -y
+sudo apt install nvidia-driver-530 -y
 sudo dpkg --configure -a
 
 echo "########################################### Installing Anydesk #############################################################################"
