@@ -42,3 +42,9 @@ sudo apt-get -y install cuda
 wget https://bitbucket.org/dependencies-ranjan/dependencies/downloads/cudnn-local-repo-ubuntu2004-8.9.0.131_1.0-1_amd64.deb
 sudo dpkg -i cudnn-local-repo-ubuntu2004-8.9.0.131_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2004-8.9.0.131/cudnn-local-80259EFB-keyring.gpg /usr/share/keyrings/
+echo "########################################### Installing Anydesk #############################################################################"
+sudo wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+sudo echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+sudo apt update
+apt -y install anydesk
+echo "########################################### Anydesk Installation Done #############################################################################"
