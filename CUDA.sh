@@ -5,6 +5,14 @@ echo "##############################                            WELCOME TO PROXP
 echo "##############################                                                                              ###################################"
 echo "###############################################################################################################################################"
 
+
+# Purge Existing Dependencies
+sudo apt -y remove --purge "^libcuda.*"
+sudo apt -y remove --purge "^cuda.*"
+sudo apt -y remove --purge "^libnvidia.*"
+sudo apt -y remove --purge "^nvidia.*"
+sudo apt -y remove --purge "^tensorrt.*" 
+
 # Update And Upgrade everything 
 sudo apt update 
 sudo apt upgrade -y
