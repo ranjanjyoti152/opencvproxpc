@@ -39,6 +39,7 @@ sudo dpkg -i cuda-repo-ubuntu2004-12-1-local_12.1.1-530.30.02-1_amd64.deb
 sudo cp /var/cuda-repo-ubuntu2004-12-1-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
 sudo apt-get -y install cuda
+sudo cp /var/cudnn-local-repo-ubuntu2004-8.9.0.131/cudnn-local-80259EFB-keyring.gpg /usr/share/keyrings/
 wget https://bitbucket.org/dependencies-ranjan/dependencies/downloads/cudnn-local-repo-ubuntu2004-8.9.0.131_1.0-1_amd64.deb
 sudo dpkg -i cudnn-local-repo-ubuntu2004-8.9.0.131_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2004-8.9.0.131/cudnn-local-80259EFB-keyring.gpg /usr/share/keyrings/
