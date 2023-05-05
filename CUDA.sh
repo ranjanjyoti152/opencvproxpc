@@ -44,3 +44,14 @@ sudo dpkg -i cudnn-local-repo-ubuntu2004-8.9.0.131_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2004-8.9.0.131/cudnn-local-80259EFB-keyring.gpg /usr/share/keyrings/
 wget https://bitbucket.org/stackcuda/download/downloads/cuddn.deb
 sudo dpkg -i cuddn.deb
+sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get install -y libcudnn8
+sudo apt-get install -y libcudnn8-dev
+sudo apt-get -y install libcudnn8-samples
+wget https://bitbucket.org/dependencies-ranjan/dependencies/downloads/cudnn-linux-x86_64-8.9.1.23_cuda12-archive.tar.xz
+tar -xvf cudnn-linux-x86_64-8.9.1.23_cuda12-archive.tar.xz
+sudo cp cudnn-*-archive/include/cudnn*.h /usr/local/cuda/include 
+sudo cp -P cudnn-*-archive/lib/libcudnn* /usr/local/cuda/lib64 
+sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+
