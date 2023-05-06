@@ -1,4 +1,4 @@
-
+#!/bin/bash
 username=$USER
 read -p "Enter Machine Password again please: " password 
 cd
