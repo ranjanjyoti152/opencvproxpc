@@ -1,4 +1,4 @@
-
+#!/bin/bash
 echo "Installing Basic Tools For installing of Dependencies"
 echo "Please Do Not Run This Multiple Times "
 echo "Run It Once "
