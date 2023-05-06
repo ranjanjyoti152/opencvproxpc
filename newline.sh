@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Hi There Ranjan"
 echo "Starting Script"
 
