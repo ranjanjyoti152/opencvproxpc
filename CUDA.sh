@@ -22,7 +22,6 @@ sudo apt install git -y
 sudo apt install net-tools -y
 sudo apt install openssh-server -y
 sudo apt install curl -y
-gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpg
 
 
 echo "Installation Of Brave Browser Completed"
