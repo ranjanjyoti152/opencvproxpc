@@ -54,3 +54,9 @@ sudo cp cudnn-*-archive/include/cudnn*.h /usr/local/cuda/include
 sudo cp -P cudnn-*-archive/lib/libcudnn* /usr/local/cuda/lib64 
 sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 sudo apt -y install nvidia-cuda-toolkit
+
+echo "###############################################################################################################################################"
+echo "##############################                                                                              ###################################"
+echo "##############################                            INSTALLATION COMPLETE                             ###################################"
+echo "##############################                       REBOOT YOUR MACHINE TO APPLY CHANGES                   ###################################"
+echo "###############################################################################################################################################"
