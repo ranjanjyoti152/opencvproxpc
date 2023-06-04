@@ -550,8 +550,10 @@ report_file="/tmp/system_health_report.txt"
     check_processes
 } > "$report_file"
 
-# Convert the report file to PDF using enscript and ps2pdf
-enscript -p - "$report_file" | ps2pdf - "$HOME/Desktop/report.pdf" >/dev/null 2>&1
+# Convert the report file to PDF using enscript and ps2pd
+desktop_dir="$HOME/Desktop"
+enscript -p - "$report_file" | ps2pdf - "$desktop_dir/report.pdf" >/dev/null 2>&1
+
 
 # Cleanup the temporary report file
 rm "$report_file"
