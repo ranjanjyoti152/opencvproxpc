@@ -379,4 +379,182 @@ echo "---------------"
 check_memory_usage
 check_disk_usage
 check_processes
+#!/bin/bash
+
+# Function to check CPU status
+check_cpu_status() {
+    echo "CPU Status:"
+    lscpu
+}
+
+# Function to check RAM status
+check_ram_status() {
+    echo "RAM Status:"
+    free -h
+}
+
+# Function to check storage devices status
+check_storage_status() {
+    echo "Storage Devices:"
+    lsblk
+}
+
+# Function to check GPU status
+check_gpu_status() {
+    echo "GPU Status:"
+    lspci | grep -i vga
+}
+
+# Function to check network interfaces status
+check_network_status() {
+    echo "Network Interfaces:"
+    ip -o link show
+}
+
+# Function to check BIOS status
+check_bios_status() {
+    echo "BIOS Version:"
+    dmidecode -t bios | grep -i version
+}
+
+# Function to check hard drive SMART status
+check_smart_status() {
+    echo "Hard Drive SMART Status:"
+    sudo apt-get install smartmontools -y
+    sudo smartctl -a /dev/sda  # Replace /dev/sda with the appropriate device
+}
+
+# Function to check GPU temperature
+check_gpu_temperature() {
+    echo "GPU Temperature:"
+    nvidia-smi --query-gpu=temperature.gpu --format=csv
+}
+
+# Function to check CPU temperature
+check_cpu_temperature() {
+    echo "CPU Temperature:"
+    sensors
+}
+
+# Function to check CPU usage
+check_cpu_usage() {
+    echo "CPU Usage:"
+    mpstat
+}
+
+# Function to check system uptime
+check_system_uptime() {
+    echo "System Uptime:"
+    uptime
+}
+
+# Function to check hard drive health
+check_hard_drive_health() {
+    echo "Hard Drive Health:"
+    sudo apt-get install smartmontools -y
+    sudo smartctl -H /dev/sda  # Replace /dev/sda with the appropriate device
+}
+
+# Function to check battery health (if applicable)
+check_battery_health() {
+    echo "Battery Health:"
+    acpi -i
+}
+
+# Function to check RAID status (if applicable)
+check_raid_status() {
+    echo "RAID Status:"
+    sudo mdadm --detail /dev/md0  # Replace /dev/md0 with the appropriate RAID device
+}
+
+# Function to check system fans status
+check_fans_status() {
+    echo "Fans Status:"
+    sensors
+}
+
+# Function to check system temperature
+check_system_temperature() {
+    echo "System Temperature:"
+    sensors
+}
+
+# Function to check system power supply status
+check_power_supply_status() {
+    echo "Power Supply Status:"
+    sudo dmidecode -t power
+}
+
+# Function to check motherboard health
+check_motherboard_health() {
+    echo "Motherboard Health:"
+    sudo dmidecode -t baseboard
+}
+
+# Function to check network card health
+check_network_card_health() {
+    echo "Network Card Health:"
+    sudo ethtool eth0  # Replace eth0 with the appropriate network interface
+}
+
+# Function to check system memory usage
+check_memory_usage() {
+    echo "Memory Usage:"
+    free -m
+}
+
+# Function to check system disk usage
+check_disk_usage() {
+    echo "Disk Usage:"
+    df -h
+}
+
+# Function to check system processes
+check_processes() {
+    echo "Running Processes:"
+    ps aux
+}
+
+# Create a temporary text file to store the report
+report_file="/tmp/system_health_report.txt"
+
+# Redirect the output of the system health checks to the report file
+{
+    echo "Hardware Status"
+    echo "---------------"
+    check_cpu_status
+    check_ram_status
+    check_storage_status
+    check_gpu_status
+    check_network_status
+    check_bios_status
+    check_smart_status
+    check_gpu_temperature
+    check_cpu_temperature
+    check_cpu_usage
+    check_system_uptime
+    check_hard_drive_health
+    check_battery_health
+    check_raid_status
+    check_fans_status
+    check_system_temperature
+    check_power_supply_status
+    check_motherboard_health
+    check_network_card_health
+
+    echo
+    echo "Software Status"
+    echo "---------------"
+    check_memory_usage
+    check_disk_usage
+    check_processes
+} > "$report_file"
+
+# Convert the report file to PDF using enscript and ps2pdf
+enscript -p - "$report_file" | ps2pdf - "$HOME/Desktop/report.pdf"
+
+# Cleanup the temporary report file
+rm "$report_file"
+
+echo "System health check completed. The report has been saved as 'report.pdf' on the desktop."
 
