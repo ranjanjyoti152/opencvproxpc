@@ -551,7 +551,7 @@ report_file="/tmp/system_health_report.txt"
 } > "$report_file"
 
 # Convert the report file to PDF using enscript and ps2pdf
-enscript -p - "$report_file" | ps2pdf - "$HOME/Desktop/report.pdf"
+enscript -p - "$report_file" | ps2pdf - "$HOME/Desktop/report.pdf" >/dev/null 2>&1
 
 # Cleanup the temporary report file
 rm "$report_file"
