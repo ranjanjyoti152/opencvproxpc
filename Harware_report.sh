@@ -1,123 +1,215 @@
 #!/bin/bash
 
-# Hardware Report
-echo "Hardware Report"
-echo "---------------"
-echo "Processor: $(grep "model name" /proc/cpuinfo | uniq | sed -e 's/model name.*: //' -e 's/ @.*//')"
-echo "RAM: $(free -h | awk '/Mem:/ {print $2}')"
-echo "RAM Diagnostics:"
-echo "$(sudo dmidecode --type 17 | grep Size | awk '{sum += $2} END {print "Total Installed RAM: " sum " MB"}')"
-echo "$(sudo dmidecode --type 17 | grep Speed | awk '{print "Speed: " $2 " MHz"}')"
-echo
+# Python script
+python_script=$(cat <<'PYTHON_SCRIPT'
+import subprocess
 
-echo "Motherboard: $(sudo dmidecode -s baseboard-product-name)"
-echo "Motherboard Diagnostics:"
-echo "$(sudo dmidecode -s baseboard-manufacturer)"
-echo "$(sudo dmidecode -s baseboard-version)"
-echo
+# Function to check CPU status
+def check_cpu_status():
+    try:
+        subprocess.run("grep -qi 'model name' /proc/cpuinfo", shell=True, check=True)
+        print("CPU: OK")
+    except subprocess.CalledProcessError:
+        print("CPU: Not Found")
 
-echo "LAN Ports: $(lshw -class network | awk '/logical name/ {print $3}')"
-echo
+# Function to check RAM status
+def check_ram_status():
+    try:
+        subprocess.run("free -h | awk '/Mem:/ {print $2}'", shell=True, check=True)
+        print("RAM: OK")
+    except subprocess.CalledProcessError:
+        print("RAM: Not Found")
 
-# Software Report
-echo "Software Report"
-echo "---------------"
-echo "Operating System: $(lsb_release -d | awk -F"\t" '{print $2}')"
-echo "Kernel Version: $(uname -r)"
-echo "Installed Packages: $(dpkg --list | wc -l)"
-echo
+# Function to check storage devices status
+def check_storage_status():
+    try:
+        subprocess.run("lsblk", shell=True, check=True)
+        print("Storage Devices: OK")
+    except subprocess.CalledProcessError:
+        print("Storage Devices: Not Found")
 
-# End of Report
-echo "Report generation complete."
+# Function to check GPU status
+def check_gpu_status():
+    try:
+        subprocess.run("lspci | grep -i vga", shell=True, check=True)
+        subprocess.run("sudo lshw -C display", shell=True, check=True)
+        print("GPU: OK")
+    except subprocess.CalledProcessError:
+        print("GPU: Not Found")
 
-#!/bin/bash
+# Function to check network interfaces status
+def check_network_status():
+    try:
+        subprocess.run("ip -o link show", shell=True, check=True)
+        print("Network Interfaces: OK")
+    except subprocess.CalledProcessError:
+        print("Network Interfaces: Not Found")
 
-# Function to check hardware status
-check_hardware_status() {
-    echo "Hardware Status"
-    echo "---------------"
+# Function to check operating system status
+def check_os_status():
+    try:
+        subprocess.run("lsb_release -d", shell=True, check=True)
+        print("Operating System: OK")
+    except subprocess.CalledProcessError:
+        print("Operating System: Not Found")
 
-    # CPU
-    echo "CPU Status:"
-    if grep -qi "model name" /proc/cpuinfo; then
-        echo "  CPU: OK"
-    else
-        echo "  CPU: Not Found"
-    fi
+# Function to check kernel version status
+def check_kernel_status():
+    try:
+        subprocess.run("uname -r", shell=True, check=True)
+        print("Kernel Version: OK")
+    except subprocess.CalledProcessError:
+        print("Kernel Version: Not Found")
 
-    # RAM
-    echo "RAM Status:"
-    if free -h | awk '/Mem:/ {print $2}' >/dev/null; then
-        echo "  RAM: OK"
-    else
-        echo "  RAM: Not Found"
-    fi
+# Function to check installed packages status
+def check_packages_status():
+    try:
+        subprocess.run("dpkg --list | wc -l", shell=True, check=True)
+        print("Installed Packages: OK")
+    except subprocess.CalledProcessError:
+        print("Installed Packages: Not Found")
 
-    # Storage Devices
-    echo "Storage Devices Status:"
-    if lsblk >/dev/null; then
-        echo "  Storage Devices: OK"
-    else
-        echo "  Storage Devices: Not Found"
-    fi
-
-    # GPU
-    echo "GPU Status:"
-    if lspci | grep -i vga >/dev/null && sudo lshw -C display >/dev/null; then
-        echo "  GPU: OK"
-    else
-        echo "  GPU: Not Found"
-    fi
-
-    # Network Interfaces
-    echo "Network Interfaces Status:"
-    if ip -o link show >/dev/null; then
-        echo "  Network Interfaces: OK"
-    else
-        echo "  Network Interfaces: Not Found"
-    fi
-
-    echo
-}
-
-# Function to check software status
-check_software_status() {
-    echo "Software Status"
-    echo "---------------"
-
-    # Operating System
-    echo "Operating System Status:"
-    if lsb_release -d | awk -F"\t" '{print $2}' >/dev/null; then
-        echo "  Operating System: OK"
-    else
-        echo "  Operating System: Not Found"
-    fi
-
-    # Kernel Version
-    echo "Kernel Version Status:"
-    if uname -r >/dev/null; then
-        echo "  Kernel Version: OK"
-    else
-        echo "  Kernel Version: Not Found"
-    fi
-
-    # Installed Packages
-    echo "Installed Packages Status:"
-    if dpkg --list | wc -l >/dev/null; then
-        echo "  Installed Packages: OK"
-    else
-        echo "  Installed Packages: Not Found"
-    fi
-
-    echo
-}
 
 # Check hardware status
-check_hardware_status
+print("Hardware Status")
+print("---------------")
+check_cpu_status()
+check_ram_status()
+check_storage_status()
+check_gpu_status()
+check_network_status()
+
+print()
 
 # Check software status
-check_software_status
+print("Software Status")
+print("---------------")
+check_os_status()
+check_kernel_status()
+check_packages_status()
+PYTHON_SCRIPT
+)
 
-# End of Report
-echo "System status check complete."
+# C++ script
+cpp_script=$(cat <<'CPP_SCRIPT'
+#include <iostream>
+#include <cstdlib>
 
+int main() {
+    std::cout << "Hardware Status" << std::endl;
+    std::cout << "---------------" << std::endl;
+
+    // CPU
+    std::cout << "CPU: ";
+    if (system("grep -qi 'model name' /proc/cpuinfo") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    // RAM
+    std::cout << "RAM: ";
+    if (system("free -h | awk '/Mem:/ {print $2}'") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    // Storage Devices
+    std::cout << "Storage Devices: ";
+    if (system("lsblk") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    // GPU
+    std::cout << "GPU: ";
+    if (system("lspci | grep -i vga && sudo lshw -C display") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    // Network Interfaces
+    std::cout << "Network Interfaces: ";
+    if (system("ip -o link show") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    std::cout << "Software Status" << std::endl;
+    std::cout << "---------------" << std::endl;
+
+    // Operating System
+    std::cout << "Operating System: ";
+    if (system("lsb_release -d") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    // Kernel Version
+    std::cout << "Kernel Version: ";
+    if (system("uname -r") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    // Installed Packages
+    std::cout << "Installed Packages: ";
+    if (system("dpkg --list | wc -l") == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+
+    return 0;
+}
+CPP_SCRIPT
+)
+
+# Save Python script to a file
+echo "$python_script" > system_status.py
+
+# Save C++ script to a file
+echo "$cpp_script" > system_status.cpp
+
+# Make the C++ script executable
+chmod +x system_status.cpp
+
+# Run the scripts
+echo "Running Python script..."
+python3 system_status.py
+
+echo
+
+echo "Running C++ script..."
+./system_status.cpp
+
+echo
+
+echo "Running Shell commands..."
+echo "Hardware Status"
+echo "---------------"
+grep -qi 'model name' /proc/cpuinfo && echo "CPU: OK" || echo "CPU: Not Found"
+free -h | awk '/Mem:/ {print $2}' && echo "RAM: OK" || echo "RAM: Not Found"
+lsblk && echo "Storage Devices: OK" || echo "Storage Devices: Not Found"
+lspci | grep -i vga && sudo lshw -C display && echo "GPU: OK" || echo "GPU: Not Found"
+ip -o link show && echo "Network Interfaces: OK" || echo "Network Interfaces: Not Found"
+
+echo
+
+echo "Software Status"
+echo "---------------"
+lsb_release -d && echo "Operating System: OK" || echo "Operating System: Not Found"
+uname -r && echo "Kernel Version: OK" || echo "Kernel Version: Not Found"
+dpkg --list | wc -l && echo "Installed Packages: OK" || echo "Installed Packages: Not Found"
+
+# Cleanup
+rm system_status.py
+rm system_status.cpp
