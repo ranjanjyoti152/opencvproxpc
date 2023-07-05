@@ -19,10 +19,6 @@ sudo apt --fix-broken install -y
 sudo rm anydesk_6.2.1-1_amd64.deb
 echo " DISPLAY ANYDESK ID " 
 sudo anydesk --get-id 
-sudo anydesk --get-id 
-sudo anydesk --get-id 
-sudo anydesk --get-id 
-sudo anydesk --get-id 
 echo " ANYDESK PASSWORD IS SET TO  ( prox@123 ) "
 echo prox@123 | sudo anydesk --set-password 
 
