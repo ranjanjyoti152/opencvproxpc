@@ -27,7 +27,7 @@ gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercon
 
 echo "########################################### Installing Nvidia Drivers #############################################################################"
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
-sudo apt install nvidia-driver-530 -y
+sudo apt install nvidia-driver-520 -y
 sudo dpkg --configure -a
 echo "########################################### Installing Nvidia CUDA #############################################################################"
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
