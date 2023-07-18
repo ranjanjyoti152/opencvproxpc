@@ -3,7 +3,8 @@
 read -p "ENTER YOUR MACHINES PASSWORD "
 
 echo " CLEANING PREVIOUS INSTALLATION "
-gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpgsudo apt purge anydesk -y 
+gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpg
+sudo apt purge anydesk -y 
 sudo apt autoclean 
 sudo apt autoremove -y 
 
