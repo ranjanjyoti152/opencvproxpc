@@ -1,4 +1,34 @@
 #!/bin/bash
+echo "###############################################################################################################################################"
+echo "##############################                                                                              ###################################"
+echo "##############################                            WELCOME TO PROXPC                                 ###################################"
+echo "##############################                                                                              ###################################"
+echo "###############################################################################################################################################"
+
+
+# Purge Existing Dependencies
+sudo apt -y remove --purge "^libcuda.*"
+sudo apt -y remove --purge "^cuda.*"
+sudo apt -y remove --purge "^libnvidia.*"
+sudo apt -y remove --purge "^nvidia.*"
+sudo apt -y remove --purge "^tensorrt.*" 
+
+# Update And Upgrade everything 
+sudo apt update 
+sudo apt upgrade -y
+sudo apt install gparted -y
+sudo apt autoremove -y
+sudo apt install git -y
+sudo apt install net-tools -y
+sudo apt install openssh-server -y
+sudo apt install curl -y
+gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpg
+
+
+echo "########################################### Installing Nvidia Drivers #############################################################################"
+sudo add-apt-repository ppa:graphics-drivers/ppa -y
+sudo apt install nvidia-driver-510 -y
+sudo dpkg --configure -a
 
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
