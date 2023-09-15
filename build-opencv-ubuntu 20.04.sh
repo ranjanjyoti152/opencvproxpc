@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y build-essential cmake git unzip pkg-config make
 sudo apt-get install -y python3.8-dev python3-numpy libtbb2 libtbb-dev
 sudo apt-get install -y  libjpeg-dev libpng-dev libtiff-dev libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libeigen3-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev sphinx-common libtbb-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libopenexr-dev libgstreamer-plugins-base1.0-dev libavutil-dev libavfilter-dev libavresample-dev
