@@ -1,5 +1,5 @@
 #!/bin/bash
 sudo apt update 
-sudo apt install python3-pip -y
-pip install jetson-stats -y 
+sudo apt install python3-pip
+pip install jetson-stats 
 sudo reboot
