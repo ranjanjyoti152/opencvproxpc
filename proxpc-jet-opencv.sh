@@ -3,7 +3,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install nano
 sudo apt-get install dphys-swapfile -y
-sudo nano /sbin/dphys-swapfile
+sudo nano /sbin/dphys-swapfile -y
 free -m
 wget https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/raw/main/OpenCV-4-8-0.sh
 sudo chmod 755 ./OpenCV-4-8-0.sh
