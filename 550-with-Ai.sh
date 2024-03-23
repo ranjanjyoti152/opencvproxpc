@@ -19,6 +19,7 @@ sudo apt install git -y
 sudo apt install net-tools -y
 sudo apt install openssh-server -y
 sudo apt install curl -y
+sudo snap install ssd-benchmark
 gsettings set org.gnome.desktop.background picture-uri https://raw.githubusercontent.com/ranjanjyoti152/opencvproxpc/main/Wallpaper-01.jpg
 echo "########################################### Installing Nvidia Drivers #############################################################################"
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
