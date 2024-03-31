@@ -1,14 +1,14 @@
 #!/bin/bash
 sudo apt update -y
-ssh-keygen -R 192.168.100.1
-ssh-keygen -R 192.168.100.2
-ssh-keygen -R 192.168.100.3
-ssh-keygen -R 192.168.100.4
-ssh-keygen -R 192.168.100.5
-ssh-keygen -R 192.168.100.6
-ssh-keygen -R 192.168.100.7
-ssh-keygen -R 192.168.100.8
-ssh-keygen -R 192.168.100.9
+ssh-keygen -R 192.168.0.1
+ssh-keygen -R 192.168.0.2
+ssh-keygen -R 192.168.0.3
+ssh-keygen -R 192.168.0.4
+ssh-keygen -R 192.168.0.5
+ssh-keygen -R 192.168.0.6
+ssh-keygen -R 192.168.0.7
+ssh-keygen -R 192.168.0.8
+ssh-keygen -R 192.168.0.9
 ssh-keygen -R 192.168.0.10
 ssh-keygen -R 192.168.0.11
 ssh-keygen -R 192.168.0.12
